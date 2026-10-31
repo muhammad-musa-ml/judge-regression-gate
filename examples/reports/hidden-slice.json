@@ -1,0 +1,247 @@
+{
+  "overall": {
+    "n_cases": 680,
+    "paired": {
+      "differential_bias": {
+        "degenerate": false,
+        "estimate": 0.029411764705882353,
+        "interval": [
+          0.016176470588235296,
+          0.04264705882352941
+        ]
+      },
+      "judge_delta": {
+        "degenerate": false,
+        "estimate": 0.08823529411764706,
+        "interval": [
+          0.06764705882352941,
+          0.10882352941176471
+        ]
+      },
+      "reference_delta": {
+        "degenerate": false,
+        "estimate": 0.058823529411764705,
+        "interval": [
+          0.03823529411764706,
+          0.08088235294117647
+        ]
+      }
+    },
+    "reasons": [],
+    "status": "pass",
+    "versions": {
+      "baseline": {
+        "agreement": 1.0,
+        "confusion": {
+          "false_fail": 0,
+          "false_pass": 0,
+          "true_fail": 380,
+          "true_pass": 300
+        },
+        "false_pass_rate": {
+          "estimate": 0.0,
+          "interval": [
+            0.0,
+            0.010007930963206886
+          ],
+          "reference_failures": 380
+        },
+        "judge_pass_rate": 0.4411764705882353,
+        "reference_pass_rate": 0.4411764705882353
+      },
+      "candidate": {
+        "agreement": 0.9705882352941176,
+        "confusion": {
+          "false_fail": 0,
+          "false_pass": 20,
+          "true_fail": 320,
+          "true_pass": 340
+        },
+        "false_pass_rate": {
+          "estimate": 0.058823529411764705,
+          "interval": [
+            0.03839847610991895,
+            0.08910638898418971
+          ],
+          "reference_failures": 340
+        },
+        "judge_pass_rate": 0.5294117647058824,
+        "reference_pass_rate": 0.5
+      }
+    }
+  },
+  "policy": {
+    "bootstrap_samples": 2000,
+    "max_abs_differential_bias": 0.1,
+    "max_false_pass_rate": 0.2,
+    "min_cases": 60,
+    "min_reference_failures": 15,
+    "seed": 2026,
+    "slices": [
+      "format",
+      "lookup"
+    ]
+  },
+  "schema_version": 1,
+  "slices": {
+    "format": {
+      "n_cases": 600,
+      "paired": {
+        "differential_bias": {
+          "degenerate": true,
+          "estimate": 0.0,
+          "interval": [
+            0.0,
+            0.0
+          ]
+        },
+        "judge_delta": {
+          "degenerate": false,
+          "estimate": 0.08333333333333333,
+          "interval": [
+            0.06333333333333334,
+            0.105
+          ]
+        },
+        "reference_delta": {
+          "degenerate": false,
+          "estimate": 0.08333333333333333,
+          "interval": [
+            0.06333333333333334,
+            0.105
+          ]
+        }
+      },
+      "reasons": [],
+      "status": "pass",
+      "versions": {
+        "baseline": {
+          "agreement": 1.0,
+          "confusion": {
+            "false_fail": 0,
+            "false_pass": 0,
+            "true_fail": 350,
+            "true_pass": 250
+          },
+          "false_pass_rate": {
+            "estimate": 0.0,
+            "interval": [
+              0.0,
+              0.010856440716407822
+            ],
+            "reference_failures": 350
+          },
+          "judge_pass_rate": 0.4166666666666667,
+          "reference_pass_rate": 0.4166666666666667
+        },
+        "candidate": {
+          "agreement": 1.0,
+          "confusion": {
+            "false_fail": 0,
+            "false_pass": 0,
+            "true_fail": 300,
+            "true_pass": 300
+          },
+          "false_pass_rate": {
+            "estimate": 0.0,
+            "interval": [
+              8.673617379884035e-19,
+              0.012642971224546034
+            ],
+            "reference_failures": 300
+          },
+          "judge_pass_rate": 0.5,
+          "reference_pass_rate": 0.5
+        }
+      }
+    },
+    "lookup": {
+      "n_cases": 80,
+      "paired": {
+        "differential_bias": {
+          "degenerate": false,
+          "estimate": 0.25,
+          "interval": [
+            0.1625,
+            0.35
+          ]
+        },
+        "judge_delta": {
+          "degenerate": false,
+          "estimate": 0.125,
+          "interval": [
+            0.0625,
+            0.2
+          ]
+        },
+        "reference_delta": {
+          "degenerate": false,
+          "estimate": -0.125,
+          "interval": [
+            -0.2,
+            -0.0625
+          ]
+        }
+      },
+      "reasons": [
+        {
+          "check": "false_pass_rate",
+          "message": "candidate: Wilson lower bound exceeds limit",
+          "status": "fail"
+        },
+        {
+          "check": "direction_reversal",
+          "message": "observed reference and judge deltas have opposite signs",
+          "status": "fail"
+        },
+        {
+          "check": "differential_bias",
+          "message": "bootstrap interval lies outside bias tolerance",
+          "status": "fail"
+        }
+      ],
+      "status": "fail",
+      "versions": {
+        "baseline": {
+          "agreement": 1.0,
+          "confusion": {
+            "false_fail": 0,
+            "false_pass": 0,
+            "true_fail": 30,
+            "true_pass": 50
+          },
+          "false_pass_rate": {
+            "estimate": 0.0,
+            "interval": [
+              0.0,
+              0.11351339317396876
+            ],
+            "reference_failures": 30
+          },
+          "judge_pass_rate": 0.625,
+          "reference_pass_rate": 0.625
+        },
+        "candidate": {
+          "agreement": 0.75,
+          "confusion": {
+            "false_fail": 0,
+            "false_pass": 20,
+            "true_fail": 20,
+            "true_pass": 40
+          },
+          "false_pass_rate": {
+            "estimate": 0.5,
+            "interval": [
+              0.35199526933465386,
+              0.6480047306653461
+            ],
+            "reference_failures": 40
+          },
+          "judge_pass_rate": 0.75,
+          "reference_pass_rate": 0.5
+        }
+      }
+    }
+  },
+  "status": "fail"
+}

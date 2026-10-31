@@ -1,0 +1,309 @@
+{
+  "overall": {
+    "n_cases": 24,
+    "paired": {
+      "differential_bias": {
+        "degenerate": true,
+        "estimate": 0.0,
+        "interval": [
+          0.0,
+          0.0
+        ]
+      },
+      "judge_delta": {
+        "degenerate": false,
+        "estimate": 0.08333333333333333,
+        "interval": [
+          0.0,
+          0.20833333333333334
+        ]
+      },
+      "reference_delta": {
+        "degenerate": false,
+        "estimate": 0.08333333333333333,
+        "interval": [
+          0.0,
+          0.20833333333333334
+        ]
+      }
+    },
+    "reasons": [
+      {
+        "check": "case_support",
+        "message": "24 pairs < 60 required",
+        "status": "inconclusive"
+      },
+      {
+        "check": "failure_support",
+        "message": "baseline: 8 reference failures < 15 required",
+        "status": "inconclusive"
+      },
+      {
+        "check": "false_pass_rate",
+        "message": "baseline: Wilson interval crosses limit",
+        "status": "inconclusive"
+      },
+      {
+        "check": "failure_support",
+        "message": "candidate: 6 reference failures < 15 required",
+        "status": "inconclusive"
+      },
+      {
+        "check": "false_pass_rate",
+        "message": "candidate: Wilson interval crosses limit",
+        "status": "inconclusive"
+      }
+    ],
+    "status": "inconclusive",
+    "versions": {
+      "baseline": {
+        "agreement": 1.0,
+        "confusion": {
+          "false_fail": 0,
+          "false_pass": 0,
+          "true_fail": 8,
+          "true_pass": 16
+        },
+        "false_pass_rate": {
+          "estimate": 0.0,
+          "interval": [
+            0.0,
+            0.32440756488388023
+          ],
+          "reference_failures": 8
+        },
+        "judge_pass_rate": 0.6666666666666666,
+        "reference_pass_rate": 0.6666666666666666
+      },
+      "candidate": {
+        "agreement": 1.0,
+        "confusion": {
+          "false_fail": 0,
+          "false_pass": 0,
+          "true_fail": 6,
+          "true_pass": 18
+        },
+        "false_pass_rate": {
+          "estimate": 0.0,
+          "interval": [
+            2.7755575615628914e-17,
+            0.3903342879021653
+          ],
+          "reference_failures": 6
+        },
+        "judge_pass_rate": 0.75,
+        "reference_pass_rate": 0.75
+      }
+    }
+  },
+  "policy": {
+    "bootstrap_samples": 2000,
+    "max_abs_differential_bias": 0.1,
+    "max_false_pass_rate": 0.2,
+    "min_cases": 60,
+    "min_reference_failures": 15,
+    "seed": 2026,
+    "slices": [
+      "format",
+      "lookup"
+    ]
+  },
+  "schema_version": 1,
+  "slices": {
+    "format": {
+      "n_cases": 12,
+      "paired": {
+        "differential_bias": {
+          "degenerate": true,
+          "estimate": 0.0,
+          "interval": [
+            0.0,
+            0.0
+          ]
+        },
+        "judge_delta": {
+          "degenerate": false,
+          "estimate": 0.08333333333333333,
+          "interval": [
+            0.0,
+            0.25
+          ]
+        },
+        "reference_delta": {
+          "degenerate": false,
+          "estimate": 0.08333333333333333,
+          "interval": [
+            0.0,
+            0.25
+          ]
+        }
+      },
+      "reasons": [
+        {
+          "check": "case_support",
+          "message": "12 pairs < 60 required",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "message": "baseline: 4 reference failures < 15 required",
+          "status": "inconclusive"
+        },
+        {
+          "check": "false_pass_rate",
+          "message": "baseline: Wilson interval crosses limit",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "message": "candidate: 3 reference failures < 15 required",
+          "status": "inconclusive"
+        },
+        {
+          "check": "false_pass_rate",
+          "message": "candidate: Wilson interval crosses limit",
+          "status": "inconclusive"
+        }
+      ],
+      "status": "inconclusive",
+      "versions": {
+        "baseline": {
+          "agreement": 1.0,
+          "confusion": {
+            "false_fail": 0,
+            "false_pass": 0,
+            "true_fail": 4,
+            "true_pass": 8
+          },
+          "false_pass_rate": {
+            "estimate": 0.0,
+            "interval": [
+              0.0,
+              0.4898908364545973
+            ],
+            "reference_failures": 4
+          },
+          "judge_pass_rate": 0.6666666666666666,
+          "reference_pass_rate": 0.6666666666666666
+        },
+        "candidate": {
+          "agreement": 1.0,
+          "confusion": {
+            "false_fail": 0,
+            "false_pass": 0,
+            "true_fail": 3,
+            "true_pass": 9
+          },
+          "false_pass_rate": {
+            "estimate": 0.0,
+            "interval": [
+              5.551115123125783e-17,
+              0.5614970317550454
+            ],
+            "reference_failures": 3
+          },
+          "judge_pass_rate": 0.75,
+          "reference_pass_rate": 0.75
+        }
+      }
+    },
+    "lookup": {
+      "n_cases": 12,
+      "paired": {
+        "differential_bias": {
+          "degenerate": true,
+          "estimate": 0.0,
+          "interval": [
+            0.0,
+            0.0
+          ]
+        },
+        "judge_delta": {
+          "degenerate": false,
+          "estimate": 0.08333333333333333,
+          "interval": [
+            0.0,
+            0.25
+          ]
+        },
+        "reference_delta": {
+          "degenerate": false,
+          "estimate": 0.08333333333333333,
+          "interval": [
+            0.0,
+            0.25
+          ]
+        }
+      },
+      "reasons": [
+        {
+          "check": "case_support",
+          "message": "12 pairs < 60 required",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "message": "baseline: 4 reference failures < 15 required",
+          "status": "inconclusive"
+        },
+        {
+          "check": "false_pass_rate",
+          "message": "baseline: Wilson interval crosses limit",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "message": "candidate: 3 reference failures < 15 required",
+          "status": "inconclusive"
+        },
+        {
+          "check": "false_pass_rate",
+          "message": "candidate: Wilson interval crosses limit",
+          "status": "inconclusive"
+        }
+      ],
+      "status": "inconclusive",
+      "versions": {
+        "baseline": {
+          "agreement": 1.0,
+          "confusion": {
+            "false_fail": 0,
+            "false_pass": 0,
+            "true_fail": 4,
+            "true_pass": 8
+          },
+          "false_pass_rate": {
+            "estimate": 0.0,
+            "interval": [
+              0.0,
+              0.4898908364545973
+            ],
+            "reference_failures": 4
+          },
+          "judge_pass_rate": 0.6666666666666666,
+          "reference_pass_rate": 0.6666666666666666
+        },
+        "candidate": {
+          "agreement": 1.0,
+          "confusion": {
+            "false_fail": 0,
+            "false_pass": 0,
+            "true_fail": 3,
+            "true_pass": 9
+          },
+          "false_pass_rate": {
+            "estimate": 0.0,
+            "interval": [
+              5.551115123125783e-17,
+              0.5614970317550454
+            ],
+            "reference_failures": 3
+          },
+          "judge_pass_rate": 0.75,
+          "reference_pass_rate": 0.75
+        }
+      }
+    }
+  },
+  "status": "inconclusive"
+}

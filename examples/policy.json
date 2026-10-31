@@ -1,0 +1,9 @@
+{
+  "slices": ["format", "lookup"],
+  "min_cases": 60,
+  "min_reference_failures": 15,
+  "max_false_pass_rate": 0.2,
+  "max_abs_differential_bias": 0.1,
+  "bootstrap_samples": 2000,
+  "seed": 2026
+}

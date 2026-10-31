@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools==82.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "judge-regression-gate"
+version = "0.1.0"
+description = "Offline checks for paired binary judge ratings against reference labels"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "Muhammad Musa"}]
+dependencies = []
+
+[project.scripts]
+judge-gate = "judge_gate.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["judge_gate*"]
+
+[tool.ruff]
+line-length = 99
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
