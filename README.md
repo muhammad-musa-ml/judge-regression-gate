@@ -24,7 +24,7 @@ python scripts/demo.py --check
 ```
 
 The first command creates fixtures and reports in `examples/`, runs the real CLI,
-and verifies all three expected outcomes. Its own exit code is zero when the demo
+and verifies all four expected scenario results. Its own exit code is zero when the demo
 behaves as expected, including the intentionally failing gate.
 
 Measured output with the checked policy, 2,000 bootstrap draws, and seed 2026:
@@ -33,15 +33,20 @@ Measured output with the checked policy, 2,000 bootstrap draws, and seed 2026:
 clean: PASS (exit 0)
 hidden-slice: FAIL (exit 1); aggregate agreement 98.53%, aggregate gate PASS, lookup gate FAIL
 low-support: INCONCLUSIVE (exit 2)
+missing-slice: INCONCLUSIVE (exit 2)
 ```
 
-The hidden-slice case has 680 pairs. Within its 80-case `lookup` slice, the reference
+The hidden-slice case has 680 pairs. Baseline agreement is 100.00% and candidate
+agreement is 97.06%; pooled agreement across both versions is 98.53%.
+Within its 80-case `lookup` slice, the reference
 pass rate decreases by 0.125 while the judge pass rate increases by 0.125. The
 candidate's false-pass rate is 20/40 = 0.5000, with Wilson interval
 [0.3520, 0.6480]. Its overall candidate false-pass rate is only 20/340 = 0.0588.
 See the complete [failure report](examples/reports/hidden-slice.md),
 [clean report](examples/reports/clean.md), and
-[low-support report](examples/reports/low-support.md).
+[low-support report](examples/reports/low-support.md). The
+[missing-slice report](examples/reports/missing-slice.md) has acceptable observed
+data but withholds a pass because the required `lookup` slice is absent.
 
 Run a single evaluation:
 
@@ -56,6 +61,36 @@ Optional installation adds the equivalent `judge-gate` command:
 python -m pip install .
 judge-gate examples/clean.jsonl --policy examples/policy.json
 ```
+
+## What this adds: baseline comparison
+
+This standalone stdlib CI gate turns the judge-validation problem described in
+Abridge's public article into a runnable test with strict version pairing,
+declared slice completeness, conditional Wilson intervals, paired bootstrap
+differential bias, machine-readable exit codes, and reproducible evidence. The
+article already discusses disaggregation and bias; this is an independent tooling
+extension, not a correction to Abridge's methods or a claim to improve its systems.
+
+The demo compares two deliberately reduced illustrative checks with the full
+gate. Agreement-only passes at pooled agreement >= 0.95 and ignores support and
+uncertainty. Overall-only uses the existing uncertainty-aware overall status and
+omits the required slice checks. Neither comparator represents Abridge's current
+methods. These measured results come from the same per-scenario CLI reports:
+
+| Synthetic scenario | Pooled agreement | Agreement-only | Overall-only | Full gate |
+|---|---:|---|---|---|
+| clean | 100.00% | PASS | PASS | PASS |
+| hidden-slice | 98.53% | PASS | PASS | FAIL |
+| low-support | 100.00% | PASS | INCONCLUSIVE | INCONCLUSIVE |
+| missing-slice | 100.00% | PASS | PASS | INCONCLUSIVE |
+
+The improvement demonstrated here is detecting specified synthetic failures or
+withholding a pass when evidence is insufficient. It is not improved LLM quality
+or validation against real labels. The generated
+[comparison report](examples/reports/comparison.md) links the source evidence;
+[comparison JSON](examples/reports/comparison.json) includes the contributing
+nonpassing checks. `python scripts/demo.py --check` verifies both comparison
+artifacts along with the fixtures and individual reports.
 
 ## Input contract
 
@@ -81,9 +116,29 @@ but produces an inconclusive gate.
 The strict [policy](examples/policy.json) prespecifies every required slice,
 minimum pair and reference-failure counts, false-pass limit, absolute differential
 bias tolerance, bootstrap draw count, and seed. Counts must be positive integers;
-draws must be 100–100,000; seed must be an integer in [0, 2³²−1]; limits must be
+draws must be 100-100,000; seed must be an integer in `[0, 2**32 - 1]`; limits must be
 finite numbers in [0, 1]. Booleans are not numeric settings. Demo thresholds are
 illustrative, not recommended operational defaults.
+
+## Use in an evaluation pipeline
+
+Export existing reference and judge ratings into the five-key JSONL contract
+above, retaining the same case IDs across the two versions. Choose the required
+slices and policy before examining the results. The exporter and label provenance
+belong to the upstream evaluation system; this tool consumes labels without
+calling a model or requiring a serving framework.
+
+For example, an ordinary CI shell step can run:
+
+```sh
+python -m judge_gate paired-labels.jsonl --policy judge-policy.json > judge-report.json
+```
+
+The JSON report remains available on a failing check. Only exit 0 makes the step
+pass; exits 1, 2, and 64 block it, including insufficient evidence. The repository's
+own CI runs the same CLI against checked synthetic examples. A passing step checks
+judge alignment under the selected policy; candidate quality needs separate
+release criteria.
 
 ## Metrics and decisions
 

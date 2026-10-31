@@ -154,7 +154,10 @@ def wilson(successes: int, trials: int) -> list[float] | None:
     z2 = Z95**2
     center = (p + z2 / (2 * trials)) / (1 + z2 / trials)
     radius = Z95 * math.sqrt(p * (1 - p) / trials + z2 / (4 * trials**2)) / (1 + z2 / trials)
-    return [max(0.0, center - radius), min(1.0, center + radius)]
+    # Exact analytical endpoints avoid cancellation at zero-tolerance policy boundaries.
+    lower = 0.0 if successes == 0 else max(0.0, center - radius)
+    upper = 1.0 if successes == trials else min(1.0, center + radius)
+    return [lower, upper]
 
 
 def _percentile(values: list[float], probability: float) -> float:

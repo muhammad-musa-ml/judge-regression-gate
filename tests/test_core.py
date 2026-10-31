@@ -146,6 +146,12 @@ class StatisticsTests(unittest.TestCase):
         self.assertEqual(wilson(20, 20)[1], 1.0)
         self.assertIsNone(wilson(0, 0))
 
+    def test_wilson_endpoints_are_exact_without_floating_cancellation(self) -> None:
+        for trials in (1, 20, 300, 1000):
+            with self.subTest(trials=trials):
+                self.assertEqual(wilson(0, trials)[0], 0.0)
+                self.assertEqual(wilson(trials, trials)[1], 1.0)
+
     def test_confusion_and_paired_hand_calculation(self) -> None:
         pairs = [
             Pair("a", "lookup", True, True, True, True),
@@ -211,6 +217,23 @@ class StatisticsTests(unittest.TestCase):
 
 
 class GateTests(unittest.TestCase):
+    def test_zero_false_pass_tolerance_distinguishes_zero_and_positive_counts(self) -> None:
+        policy = replace(POLICY, max_false_pass_rate=0)
+        for error_cases, expected in ((0, "inconclusive"), (1, "fail")):
+            with self.subTest(error_cases=error_cases):
+                pairs = [
+                    Pair(str(i), "lookup", False, i < error_cases, False, i < error_cases)
+                    for i in range(300)
+                ]
+                report = evaluate(pairs, policy)
+                self.assertEqual(report["status"], expected)
+                self.assertTrue(
+                    all(
+                        reason["check"] == "false_pass_rate" and reason["status"] == expected
+                        for reason in report["overall"]["reasons"]
+                    )
+                )
+
     def test_zero_failures_and_missing_declared_slice_are_inconclusive(self) -> None:
         pairs = [Pair("a", "lookup", True, True, True, True)]
         report = evaluate(pairs, replace(POLICY, slices=("lookup", "missing")))

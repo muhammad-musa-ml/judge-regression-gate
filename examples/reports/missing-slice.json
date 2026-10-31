@@ -1,0 +1,232 @@
+{
+  "overall": {
+    "n_cases": 80,
+    "paired": {
+      "differential_bias": {
+        "degenerate": true,
+        "estimate": 0.0,
+        "interval": [
+          0.0,
+          0.0
+        ]
+      },
+      "judge_delta": {
+        "degenerate": false,
+        "estimate": 0.125,
+        "interval": [
+          0.0625,
+          0.2
+        ]
+      },
+      "reference_delta": {
+        "degenerate": false,
+        "estimate": 0.125,
+        "interval": [
+          0.0625,
+          0.2
+        ]
+      }
+    },
+    "reasons": [],
+    "status": "pass",
+    "versions": {
+      "baseline": {
+        "agreement": 1.0,
+        "confusion": {
+          "false_fail": 0,
+          "false_pass": 0,
+          "true_fail": 30,
+          "true_pass": 50
+        },
+        "false_pass_rate": {
+          "estimate": 0.0,
+          "interval": [
+            0.0,
+            0.11351339317396876
+          ],
+          "reference_failures": 30
+        },
+        "judge_pass_rate": 0.625,
+        "reference_pass_rate": 0.625
+      },
+      "candidate": {
+        "agreement": 1.0,
+        "confusion": {
+          "false_fail": 0,
+          "false_pass": 0,
+          "true_fail": 20,
+          "true_pass": 60
+        },
+        "false_pass_rate": {
+          "estimate": 0.0,
+          "interval": [
+            0.0,
+            0.16112515805281938
+          ],
+          "reference_failures": 20
+        },
+        "judge_pass_rate": 0.75,
+        "reference_pass_rate": 0.75
+      }
+    }
+  },
+  "policy": {
+    "bootstrap_samples": 2000,
+    "max_abs_differential_bias": 0.1,
+    "max_false_pass_rate": 0.2,
+    "min_cases": 60,
+    "min_reference_failures": 15,
+    "seed": 2026,
+    "slices": [
+      "format",
+      "lookup"
+    ]
+  },
+  "schema_version": 1,
+  "slices": {
+    "format": {
+      "n_cases": 80,
+      "paired": {
+        "differential_bias": {
+          "degenerate": true,
+          "estimate": 0.0,
+          "interval": [
+            0.0,
+            0.0
+          ]
+        },
+        "judge_delta": {
+          "degenerate": false,
+          "estimate": 0.125,
+          "interval": [
+            0.0625,
+            0.2
+          ]
+        },
+        "reference_delta": {
+          "degenerate": false,
+          "estimate": 0.125,
+          "interval": [
+            0.0625,
+            0.2
+          ]
+        }
+      },
+      "reasons": [],
+      "status": "pass",
+      "versions": {
+        "baseline": {
+          "agreement": 1.0,
+          "confusion": {
+            "false_fail": 0,
+            "false_pass": 0,
+            "true_fail": 30,
+            "true_pass": 50
+          },
+          "false_pass_rate": {
+            "estimate": 0.0,
+            "interval": [
+              0.0,
+              0.11351339317396876
+            ],
+            "reference_failures": 30
+          },
+          "judge_pass_rate": 0.625,
+          "reference_pass_rate": 0.625
+        },
+        "candidate": {
+          "agreement": 1.0,
+          "confusion": {
+            "false_fail": 0,
+            "false_pass": 0,
+            "true_fail": 20,
+            "true_pass": 60
+          },
+          "false_pass_rate": {
+            "estimate": 0.0,
+            "interval": [
+              0.0,
+              0.16112515805281938
+            ],
+            "reference_failures": 20
+          },
+          "judge_pass_rate": 0.75,
+          "reference_pass_rate": 0.75
+        }
+      }
+    },
+    "lookup": {
+      "n_cases": 0,
+      "paired": {
+        "differential_bias": {
+          "degenerate": null,
+          "estimate": null,
+          "interval": null
+        },
+        "judge_delta": {
+          "degenerate": null,
+          "estimate": null,
+          "interval": null
+        },
+        "reference_delta": {
+          "degenerate": null,
+          "estimate": null,
+          "interval": null
+        }
+      },
+      "reasons": [
+        {
+          "check": "case_support",
+          "message": "0 pairs < 60 required",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "message": "baseline: 0 reference failures < 15 required",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "message": "candidate: 0 reference failures < 15 required",
+          "status": "inconclusive"
+        }
+      ],
+      "status": "inconclusive",
+      "versions": {
+        "baseline": {
+          "agreement": null,
+          "confusion": {
+            "false_fail": 0,
+            "false_pass": 0,
+            "true_fail": 0,
+            "true_pass": 0
+          },
+          "false_pass_rate": {
+            "estimate": null,
+            "interval": null,
+            "reference_failures": 0
+          },
+          "judge_pass_rate": null,
+          "reference_pass_rate": null
+        },
+        "candidate": {
+          "agreement": null,
+          "confusion": {
+            "false_fail": 0,
+            "false_pass": 0,
+            "true_fail": 0,
+            "true_pass": 0
+          },
+          "false_pass_rate": {
+            "estimate": null,
+            "interval": null,
+            "reference_failures": 0
+          },
+          "judge_pass_rate": null,
+          "reference_pass_rate": null
+        }
+      }
+    }
+  },
+  "status": "inconclusive"
+}

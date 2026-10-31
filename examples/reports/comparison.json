@@ -1,0 +1,155 @@
+{
+  "agreement_only_threshold": 0.95,
+  "comparator_scope": "Deliberately reduced illustrative comparators, not Abridge's current methods. Agreement-only ignores uncertainty and support; overall-only retains the computed overall checks but omits every slice check.",
+  "scenarios": [
+    {
+      "agreement_only": "pass",
+      "full_gate": "pass",
+      "n_pairs": 160,
+      "nonpassing_checks": [],
+      "overall_only": "pass",
+      "pooled_agreement": 1.0,
+      "scenario": "clean",
+      "source_report": "clean.json"
+    },
+    {
+      "agreement_only": "pass",
+      "full_gate": "fail",
+      "n_pairs": 680,
+      "nonpassing_checks": [
+        {
+          "check": "false_pass_rate",
+          "scope": "slice:lookup",
+          "status": "fail"
+        },
+        {
+          "check": "direction_reversal",
+          "scope": "slice:lookup",
+          "status": "fail"
+        },
+        {
+          "check": "differential_bias",
+          "scope": "slice:lookup",
+          "status": "fail"
+        }
+      ],
+      "overall_only": "pass",
+      "pooled_agreement": 0.9852941176470589,
+      "scenario": "hidden-slice",
+      "source_report": "hidden-slice.json"
+    },
+    {
+      "agreement_only": "pass",
+      "full_gate": "inconclusive",
+      "n_pairs": 24,
+      "nonpassing_checks": [
+        {
+          "check": "case_support",
+          "scope": "overall",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "scope": "overall",
+          "status": "inconclusive"
+        },
+        {
+          "check": "false_pass_rate",
+          "scope": "overall",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "scope": "overall",
+          "status": "inconclusive"
+        },
+        {
+          "check": "false_pass_rate",
+          "scope": "overall",
+          "status": "inconclusive"
+        },
+        {
+          "check": "case_support",
+          "scope": "slice:format",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "scope": "slice:format",
+          "status": "inconclusive"
+        },
+        {
+          "check": "false_pass_rate",
+          "scope": "slice:format",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "scope": "slice:format",
+          "status": "inconclusive"
+        },
+        {
+          "check": "false_pass_rate",
+          "scope": "slice:format",
+          "status": "inconclusive"
+        },
+        {
+          "check": "case_support",
+          "scope": "slice:lookup",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "scope": "slice:lookup",
+          "status": "inconclusive"
+        },
+        {
+          "check": "false_pass_rate",
+          "scope": "slice:lookup",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "scope": "slice:lookup",
+          "status": "inconclusive"
+        },
+        {
+          "check": "false_pass_rate",
+          "scope": "slice:lookup",
+          "status": "inconclusive"
+        }
+      ],
+      "overall_only": "inconclusive",
+      "pooled_agreement": 1.0,
+      "scenario": "low-support",
+      "source_report": "low-support.json"
+    },
+    {
+      "agreement_only": "pass",
+      "full_gate": "inconclusive",
+      "n_pairs": 80,
+      "nonpassing_checks": [
+        {
+          "check": "case_support",
+          "scope": "slice:lookup",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "scope": "slice:lookup",
+          "status": "inconclusive"
+        },
+        {
+          "check": "failure_support",
+          "scope": "slice:lookup",
+          "status": "inconclusive"
+        }
+      ],
+      "overall_only": "pass",
+      "pooled_agreement": 1.0,
+      "scenario": "missing-slice",
+      "source_report": "missing-slice.json"
+    }
+  ],
+  "schema_version": 1
+}

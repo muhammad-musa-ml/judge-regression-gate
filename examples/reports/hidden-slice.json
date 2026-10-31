@@ -145,7 +145,7 @@
           "false_pass_rate": {
             "estimate": 0.0,
             "interval": [
-              8.673617379884035e-19,
+              0.0,
               0.012642971224546034
             ],
             "reference_failures": 300
